@@ -1,0 +1,25 @@
+{
+    "name": "kaisargaming/core-lib",
+    "description": "PHP Core library for Kaisargaming App development",
+    "type": "library",
+    "version": "1.1.0",
+    "homepage": "https://github.com/kaisargaming/core-lib.git",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kaisargaming",
+            "email": "kaisargamingdev@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "KGaming\\Core\\": "src/"
+        }
+    },
+    "require": {
+        "pds/skeleton": "^1.0",
+        "ramsey/uuid": "^3.9",
+        "php": "^7.0.0"
+    }
+}
