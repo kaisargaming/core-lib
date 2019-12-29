@@ -39,4 +39,14 @@ class Utils
         $time = new \DateTime('now', new \DateTimeZone($tz));
         return $time->format($format);
     }
+
+    public static function toJson($payload)
+    {
+        return json_encode($payload);
+    }
+
+    public static function toArray($payload)
+    {
+        return json_decode($payload, true);
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace KGaming\Core;
 
-class Model
+class Model implements ModelInterface
 {
     private static $conn = null;
     protected $table;
