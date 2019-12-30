@@ -1,7 +1,7 @@
 <?php
 namespace KGaming\Core;
 
-class HttpClient implements HttpClientInterface
+class HttpClient
 {
     protected $http;
     protected $payload = [];
