@@ -1,6 +1,7 @@
 {
     "name": "kaisargaming/core-lib",
     "description": "PHP Core library for Kaisargaming App development",
+    "version": "0.1.1",
     "type": "library",
     "homepage": "https://github.com/kaisargaming/core-lib.git",
     "license": "MIT",

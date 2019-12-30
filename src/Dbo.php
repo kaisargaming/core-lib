@@ -11,7 +11,7 @@ class Dbo
         $this->messenger = new Messenger();
     }
 
-    public function getConnection()
+    public static function getConnection()
     {
         /**
          * The Database credentials should be placed

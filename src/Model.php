@@ -6,15 +6,15 @@ class Model implements ModelInterface
     private static $conn = null;
     protected $table;
     protected $pkey;
+    protected $options;
     protected $query = '';
     protected $props = [];
 
-    public function __construct($table, $pkey = 'id')
+    public function __construct($table, $options = [])
     {
-        $db = new Dbo();
-        self::$conn = $db->getConnection();
+        self::$conn = Dbo::getConnection();
         $this->table = $table;
-        $this->pkey = $pkey;
+        $this->initOptions($options);
     }
 
     public function __destruct()
@@ -116,5 +116,23 @@ class Model implements ModelInterface
         }
         $this->query = "INSERT INTO {$this->table} ({$fields}) VALUES ({$vals})";
         return $this->exec();
+    }
+
+    private function initOptions($options)
+    {
+        $defaults = [
+            'is_pivot' => false,
+            'pkey' => 'id'
+        ];
+
+        if (count($options) > 0)
+        {
+            foreach ($options as $k=>$v)
+            {
+                $defaults[$k] = $v;
+            }
+        }
+        $this->pkey = $defaults['pkey'];
+        $this->options = $defaults;
     }
 }
