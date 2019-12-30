@@ -1,19 +1,19 @@
 <?php
 namespace KGaming\Core;
 
-class Model implements ModelInterface
+class Model
 {
     private static $conn = null;
     protected $table;
     protected $pkey;
-    protected $options;
+    protected $fillable;
+    protected $hidden;
     protected $query = '';
     protected $props = [];
 
-    public function __construct($table, $options = [])
+    public function __construct($options)
     {
         self::$conn = Dbo::getConnection();
-        $this->table = $table;
         $this->initOptions($options);
     }
 
@@ -121,18 +121,20 @@ class Model implements ModelInterface
     private function initOptions($options)
     {
         $defaults = [
-            'is_pivot' => false,
-            'pkey' => 'id'
+            'table' => null,
+            'pkey' => 'id',
+            'fillable' => [],
+            'hidden' => []
         ];
 
-        if (count($options) > 0)
+        foreach ($options as $k=>$v)
         {
-            foreach ($options as $k=>$v)
-            {
-                $defaults[$k] = $v;
-            }
+            $defaults[$k] = $v;
         }
+
+        $this->table = $defaults['table'];
         $this->pkey = $defaults['pkey'];
-        $this->options = $defaults;
+        $this->fillable = $defaults['fillable'];
+        $this->hidden = $defaults['fillable'];
     }
 }
